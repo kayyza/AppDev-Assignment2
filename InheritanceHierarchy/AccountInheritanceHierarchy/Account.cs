@@ -13,10 +13,10 @@ namespace AccountInheritanceHierarchy
         private string lastName;
         private string firstName;
 
-        public Account(string accNumber, decimal AccBalance, string lastName, string firstName)
+        public Account(string accNumber, decimal initialBalance, string lastName, string firstName)
         {
             AccNumber = accNumber;
-            Balance = AccBalance;
+            Balance = initialBalance;
             LastName = lastName;
             FirstName = firstName;
         }
@@ -112,25 +112,25 @@ namespace AccountInheritanceHierarchy
             }
         }
 
-        public void DisplayAccount()
+        public virtual void DisplayAccount()
         {
 
             string balance = "$" + Balance;
             
-            drawLine();
+            DrawLine();
             Console.WriteLine($"│ {"ACCOUNT",45}  {"│",33}");
-            drawLine();
+            DrawLine();
 
             Console.WriteLine($"│ {"Account Number",-25} │ {AccNumber,50} │");
             Console.WriteLine($"│ {"Balance Ammount",-25} │ {balance,50} │");
             Console.WriteLine($"│ {"Last Name",-25} │ {LastName, -50} │");
             Console.WriteLine($"│ {"First Name",-25} │ {FirstName, -50} │");
            
-            drawLine();
+            DrawLine();
 
         }
 
-        public static void drawLine()
+        public static void DrawLine()
         {
             Console.Write("│");
             for (int i = 0; i < 80; i++)
