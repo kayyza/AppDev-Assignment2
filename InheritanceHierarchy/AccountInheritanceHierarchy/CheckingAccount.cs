@@ -6,47 +6,52 @@ using System.Threading.Tasks;
 
 namespace AccountInheritanceHierarchy
 {
-    internal class SavingsAccount : Account
+    internal class CheckingAccount : Account
     {
-        private decimal interestRate;
+        private decimal transactionFee;
 
-        public SavingsAccount(string accNumber, decimal initialBalance, string lastName, string firstName, decimal interestRate)
+        public CheckingAccount (string accNumber, decimal initialBalance, string lastName, string firstName, decimal transactionFee)
             : base(accNumber, initialBalance, lastName, firstName)
         {
-            InterestRate = interestRate;
+            TransactionFee = transactionFee;
         }
 
-        // property for interestRate attribute
-        public decimal InterestRate
+        public decimal TransactionFee
         {
             get
             {
-                if (interestRate < 0)
+                if (transactionFee < 0)
                 {
-                    interestRate = 0.05m;
-                    return interestRate;
+                    transactionFee = 1.50m;
+                    return transactionFee;
                 }
                 else
                 {
-                    return interestRate;
+                    return transactionFee;
                 }
-               
             }
+
             set
             {
-               interestRate = value;
+                transactionFee = value;
             }
         }
 
-        // calculates the amount of interest earned by an account
-        public decimal CalculateInterest()
+        public override void Credit(decimal amount)
         {
-            decimal interest = InterestRate * Balance;
-            return interest;
+            base.Credit(amount);
+            Balance -= transactionFee;
+        }
+
+        public override bool Debit(decimal amount)
+        {
+            base.Debit(amount);
+            Balance -= TransactionFee;
+            return true;
         }
 
         public override void DisplayAccount()
-        {   
+        {
             DrawLine();
             Console.WriteLine($"│ {"SAVINGS ACCOUNT",45}  {"│",33}");
             DrawLine();
@@ -54,8 +59,7 @@ namespace AccountInheritanceHierarchy
             Console.WriteLine($"│ {"Balance Ammount",-25} │ {Balance,50} │");
             Console.WriteLine($"│ {"Last Name",-25} │ {LastName,-50} │");
             Console.WriteLine($"│ {"First Name",-25} │ {FirstName,-50} │");
-            Console.WriteLine($"│ {"Interest Rate",-25} │ {InterestRate,50} │");
-            Console.WriteLine($"│ {"Interest Amount",-25} │ {CalculateInterest(),50} │");
+            Console.WriteLine($"│ {"Transaction Fee",-25} │ {TransactionFee,50} │");
         }
     }
 }

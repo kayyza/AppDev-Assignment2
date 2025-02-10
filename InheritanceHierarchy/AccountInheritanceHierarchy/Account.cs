@@ -85,7 +85,7 @@ namespace AccountInheritanceHierarchy
         }
 
         // adds a positive amount to the current balance
-        public void Credit (decimal amount)
+        public virtual void Credit (decimal amount)
         {
             if (amount > 0)
             {
@@ -97,7 +97,7 @@ namespace AccountInheritanceHierarchy
 
 
         // withdraws money from the Account
-        public bool Debit (decimal amount)
+        public virtual bool Debit (decimal amount)
         {
             if (amount > Balance)
             {
