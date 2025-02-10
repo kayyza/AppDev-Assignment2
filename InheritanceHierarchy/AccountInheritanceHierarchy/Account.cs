@@ -90,8 +90,10 @@ namespace AccountInheritanceHierarchy
             if (amount > 0)
             {
                 Balance += amount;
+                Console.WriteLine("Credit of $" + (amount) + " was added.");
             }
         }
+
 
 
         // withdraws money from the Account
@@ -106,6 +108,7 @@ namespace AccountInheritanceHierarchy
             {
                 Balance -= amount;
                 return true;
+
             }
         }
 
