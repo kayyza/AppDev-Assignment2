@@ -20,20 +20,20 @@ namespace AccountInheritanceHierarchy
         {
             get
             {
-                if (transactionFee < 0)
-                {
-                    transactionFee = 1.50m;
-                    return transactionFee;
-                }
-                else
-                {
-                    return transactionFee;
-                }
+                return transactionFee;
             }
 
             set
             {
-                transactionFee = value;
+                if (value > 0)
+                {
+                    transactionFee = value;
+                }
+                else
+                {
+                    Console.WriteLine("Transaction fee should be a positive value.");
+                    transactionFee = 1.5m;
+                }
             }
         }
 

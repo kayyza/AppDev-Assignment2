@@ -21,20 +21,20 @@ namespace AccountInheritanceHierarchy
         {
             get
             {
-                if (interestRate < 0)
-                {
-                    interestRate = 0.05m;
-                    return interestRate;
-                }
-                else
-                {
-                    return interestRate;
-                }
-               
+                return interestRate;
             }
             set
             {
-               interestRate = value;
+                if (value > 0)
+                {
+                    interestRate = value;
+                }
+                else
+                {
+                    Console.WriteLine("Interest rate should be a positive value");
+                    interestRate = 0.05m;
+                }
+      
             }
         }
 

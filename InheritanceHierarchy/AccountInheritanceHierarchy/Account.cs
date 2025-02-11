@@ -45,15 +45,15 @@ namespace AccountInheritanceHierarchy
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    accBalance = 0;
-                    Console.WriteLine("Account initial balance amount should be a positive value");
+                    accBalance = value;
+                  
                 }
                 else
                 {
-                    accBalance = value;
-                    
+                    Console.WriteLine("Account initial balance amount should be a positive value");
+                    accBalance = 0;
                 }
             }
         }
@@ -87,11 +87,15 @@ namespace AccountInheritanceHierarchy
         // adds a positive amount to the current balance
         public virtual void Credit (decimal amount)
         {
-            if (amount > 0)
+            if (amount >= 0)
             {
                 Balance += amount;
-                Console.WriteLine("Credit of $" + (amount) + " was added.");
             }
+            else
+            {
+                Console.WriteLine("Credit amount should be a non-negative value.");
+            }
+           
         }
 
 
@@ -99,15 +103,15 @@ namespace AccountInheritanceHierarchy
         // withdraws money from the Account
         public virtual bool Debit (decimal amount)
         {
-            if (amount > Balance)
+            if (amount <= Balance)
             {
-                Console.WriteLine("Debit amount exceeded account balance");
-                return false;
+                accBalance -= amount;
+                return true;
             } 
             else
             {
-                Balance -= amount;
-                return true;
+                Console.WriteLine("Debit amount exceeded account balance");
+                return false;
 
             }
         }
