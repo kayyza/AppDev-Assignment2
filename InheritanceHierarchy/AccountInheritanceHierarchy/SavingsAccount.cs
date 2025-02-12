@@ -41,21 +41,25 @@ namespace AccountInheritanceHierarchy
         // calculates the amount of interest earned by an account
         public decimal CalculateInterest()
         {
-            decimal interest = InterestRate * Balance;
+            decimal interest = Math.Round(InterestRate * Balance, 2);
             return interest;
         }
 
         public override void DisplayAccount()
-        {   
+        {
+            string balance = "$" + Balance;
+            string interest = "$" + CalculateInterest();
+
             DrawLine();
             Console.WriteLine($"│ {"SAVINGS ACCOUNT",45}  {"│",33}");
             DrawLine();
             Console.WriteLine($"│ {"Account Number",-25} │ {AccNumber,50} │");
-            Console.WriteLine($"│ {"Balance Ammount",-25} │ {Balance,50} │");
+            Console.WriteLine($"│ {"Balance Ammount",-25} │ {balance,50} │");
             Console.WriteLine($"│ {"Last Name",-25} │ {LastName,-50} │");
             Console.WriteLine($"│ {"First Name",-25} │ {FirstName,-50} │");
             Console.WriteLine($"│ {"Interest Rate",-25} │ {InterestRate,50} │");
-            Console.WriteLine($"│ {"Interest Amount",-25} │ {CalculateInterest(),50} │");
+            Console.WriteLine($"│ {"Interest Amount",-25} │ {interest,50} │");
+            DrawLine();
         }
     }
 }

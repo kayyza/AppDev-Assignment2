@@ -90,6 +90,7 @@ namespace AccountInheritanceHierarchy
             if (amount >= 0)
             {
                 Balance += amount;
+                Console.WriteLine("Credit of " + "$" + amount + " was added to your account.");
             }
             else
             {
@@ -99,13 +100,13 @@ namespace AccountInheritanceHierarchy
         }
 
 
-
         // withdraws money from the Account
         public virtual bool Debit (decimal amount)
         {
             if (amount <= Balance)
             {
                 accBalance -= amount;
+                Console.WriteLine("$" + amount + " was withdrawn successfully from your account.");
                 return true;
             } 
             else
@@ -122,7 +123,7 @@ namespace AccountInheritanceHierarchy
             string balance = "$" + Balance;
             
             DrawLine();
-            Console.WriteLine($"│ {"ACCOUNT",45}  {"│",33}");
+            Console.WriteLine($"│ {"ACCOUNT", 45}  {"│",33}");
             DrawLine();
 
             Console.WriteLine($"│ {"Account Number",-25} │ {AccNumber,50} │");

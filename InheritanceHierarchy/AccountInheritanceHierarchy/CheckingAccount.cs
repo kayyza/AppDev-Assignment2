@@ -52,14 +52,19 @@ namespace AccountInheritanceHierarchy
 
         public override void DisplayAccount()
         {
+
+            string fee = "$" + TransactionFee;
+            string balance = "$" + Balance;
+
             DrawLine();
-            Console.WriteLine($"│ {"SAVINGS ACCOUNT",45}  {"│",33}");
+            Console.WriteLine($"│ {"CHECKING ACCOUNT",45}  {"│",33}");
             DrawLine();
             Console.WriteLine($"│ {"Account Number",-25} │ {AccNumber,50} │");
-            Console.WriteLine($"│ {"Balance Ammount",-25} │ {Balance,50} │");
+            Console.WriteLine($"│ {"Balance Ammount",-25} │ {balance,50} │");
             Console.WriteLine($"│ {"Last Name",-25} │ {LastName,-50} │");
             Console.WriteLine($"│ {"First Name",-25} │ {FirstName,-50} │");
-            Console.WriteLine($"│ {"Transaction Fee",-25} │ {TransactionFee,50} │");
+            Console.WriteLine($"│ {"Transaction Fee",-25} │ {fee,50} │");
+            DrawLine();
         }
     }
 }
